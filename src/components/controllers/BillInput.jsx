@@ -1,7 +1,11 @@
 import React from "react";
 
-const BillInput = () => {
-  return <div> fkgfjgjfg</div>;
+const BillInput = ({ handleBill, bill }) => {
+  return (
+    <div>
+      <input onChange={handleBill} type="number" value={bill} />
+    </div>
+  );
 };
 
 export default BillInput;

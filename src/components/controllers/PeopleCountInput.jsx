@@ -1,7 +1,11 @@
 import React from "react";
 
-const PeopleCountInput = () => {
-  return <div>People Numbers</div>;
+const PeopleCountInput = ({ handlePeopleCount, peopleCount }) => {
+  return (
+    <div>
+      <input type="number" onChange={handlePeopleCount} value={peopleCount} />
+    </div>
+  );
 };
 
 export default PeopleCountInput;
