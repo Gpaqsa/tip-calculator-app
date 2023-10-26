@@ -6,9 +6,13 @@ import iconDollar from "../assets/icon-dollar.svg";
 import iconPerson from "../assets/icon-person.svg";
 
 const CalculationComponent = () => {
-  const [bill, setBill] = useState("");
-  const [peopleCount, setPeopleCount] = useState("");
+  const [bill, setBill] = useState(0);
+  const [tip, setTip] = useState(0);
+  const [peopleCount, setPeopleCount] = useState(0);
   const [error, setError] = useState("");
+  const [active, setActive] = useState(false);
+  const [totalTip, setTotalTip] = useState(0);
+  const [totalPerson, setTotalPerson] = useState(0);
 
   const handleBill = (event) => {
     setBill(event.target.value);
@@ -24,6 +28,18 @@ const CalculationComponent = () => {
     }
   };
 
+  const handleTipBtn = (event) => {
+    setTip(Number(event.target.value));
+    setActive(true);
+  };
+  const handleReset = () => {
+    setBill(0);
+    setTip(0);
+    setPeopleCount(0);
+    setTotalPerson(0);
+    setTotalTip(0);
+    setActive(false);
+  };
   return (
     <div className="calculation-content">
       <ControllerBill
@@ -31,7 +47,7 @@ const CalculationComponent = () => {
         bill={bill}
         handleBill={handleBill}
       />
-      <ControllerTip />
+      <ControllerTip handleTipBtn={handleTipBtn} tip={tip} />
       <ControllerPeopleCount
         iconPerson={iconPerson}
         error={error}
